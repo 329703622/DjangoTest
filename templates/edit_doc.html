@@ -1,0 +1,22 @@
+<html>
+	<head>
+		<title>编辑文献</title>
+    </head>
+    
+    <body>
+    	<form action="#" method="post">
+            {% csrf_token %}
+        	标题: <input type="text" name="title" value="{{ title }}"><br>
+            作者: <input type="text" name="author" value="{{ author }}"><br>
+            年份: <input type="text" name="date" value="{{ date }}"><br>
+            出处: <input type="text" name="source" value="{{ source }}"><br>
+            <input type="submit" value="确定">
+            {% if flag %}
+            <p>文献信息修改成功！</p>
+            
+            {% endif %}
+        </form> 
+         <a href=/>返回主页</a><br>
+	</body>
+
+</html>

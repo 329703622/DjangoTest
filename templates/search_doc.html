@@ -1,0 +1,44 @@
+<html>
+	<head>
+		<title>搜索结果</title>
+        <meta charset='utf-8'>
+    <link href='https://dn-maxiang.qbox.me/res-min/themes/marxico.css' rel='stylesheet'>
+    </head>
+    
+    <body>
+        <h1>参考文献管理系统</h1>
+    	
+        <div id='preview-contents' class='note-content'>
+    <div id="wmd-preview" class="preview-content"></div>
+    <div id="wmd-preview-section-50" class="wmd-preview-section preview-content">
+        <table>
+        <thead>
+        <tr>
+          
+          <th align="center">标题</th>
+          <th align="center">作者</th>
+          <th align="center">年份</th>
+          <th align="center">出处</th>
+          <th align="center">操作</th>
+          
+
+        </tr>
+      </thead>
+      {% for doc in doc_list %}
+
+      <tbody>
+        <tr>
+            
+            <td align="center">{{ doc.title  }}</td>
+            <td align="center">{{ doc.author  }}</td>
+            <td align="center">{{ doc.date  }}</td>
+            <td align="center">{{ doc.source  }}</td>
+            <td align="center"><a href ="/edit_doc/{{doc.id}}">编辑</a>   <a href ="/delete_doc/{{doc.id}}" onclick="return confirm('确认删除文献 《{{ doc.title  }}》么？')">删除</a></td>
+        </tr>
+      </tbody>
+      {% endfor %}
+    </table>
+
+      <a href=/>返回主页</a><br>
+	</body>
+</html>

@@ -1,0 +1,24 @@
+<html>
+	<head>
+		<title>添加文献</title>
+    </head>
+    
+    <body>
+    	<form action="/add_doc/" method="post">
+            {% csrf_token %}
+        	标题: <input type="text" name="title"><br>
+            作者: <input type="text" name="author"><br>
+            年份: <input type="text" name="date"><br>
+            出处: <input type="text" name="source"><br>
+            <input type="submit" value="确定">
+            {% if title %}
+            <p>{{ title }}</p>
+            <p>{{ author }}</p>
+            <p>{{ date }}</p>
+            <p>{{ source }}</p>
+            {% endif %}
+        </form> 
+      <a href=/>返回主页</a><br>
+
+	</body>
+</html>
