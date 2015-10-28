@@ -83,5 +83,10 @@ def search_doc(request):
             doc_list = Doc.objects.filter(title__contains=search)
         elif request.POST.get('selectType') == 'source':
             doc_list = Doc.objects.filter(source__contains=search)
+    #if doc_list == "":
+    #    content["alart"]=u"搜索结果为空"
+    #else :
+    #    content["alart"]=u"搜索完毕"
+    #print content["alart"]
 
 	return render(request,'search_doc.html',{'doc_list':doc_list,'content':content})
