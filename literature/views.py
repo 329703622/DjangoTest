@@ -2,18 +2,20 @@
 from django.shortcuts import render
 from literature.models import Doc
 from django.shortcuts import render_to_response
-from django.core.context_processors import csrf
+#from django.core.context_processors import csrf
+from django.views.decorators.csrf import csrf_protect
 
+@csrf_protect
 def index(request):
     content={}
-    content.update(csrf(request))
+    #content.update(csrf(request))
     doc_list = Doc.objects.all()
     return render(request,'index.html',{'doc_list':doc_list,'content':content})
 
-
+@csrf_protect
 def add_doc(request):
     content={}
-    content.update(csrf(request))
+    #content.update(csrf(request))
     
     if request.POST:
     	if request.POST['title'] != "" and request.POST['author'] != "" and request.POST['date'] != "" and request.POST['source'] != "":
@@ -44,10 +46,10 @@ def delete_doc(request,id):
     doc_list = Doc.objects.all()
     return render_to_response('index.html',{'doc_list':doc_list})
 
-
+@csrf_protect
 def edit_doc(request,id):
     content={}
-    content.update(csrf(request))
+    #content.update(csrf(request))
     p = Doc.objects.get(id=id)
     
     if request.POST:
@@ -68,10 +70,10 @@ def edit_doc(request,id):
 
     return render(request,'edit_doc.html',content)
 
-
+@csrf_protect
 def search_doc(request):
     content={}
-    content.update(csrf(request))
+    #content.update(csrf(request))
     
     if request.POST:
         search=request.POST['search']
